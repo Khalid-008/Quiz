@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>@ViewData["Title"] - Quiz</title>
+  <link rel="stylesheet" href="~/css/output.css"/>
+</head>
+<body>
+   <div class="flex flex-col h-screen justify-between"> 
+    <nav class="p-3 bg-gray-800 text-white border-gray-200  rounded-bl-[14px] rounded-br-[14px]">
+        <div class="container flex  items-center justify-center mx-auto">
+         
+            <div class="hidden w-full md:block md:w-auto">
+                <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:text-base md:font-medium md:border-0">
+                    <li>
+                            <a href="Dashboard" class="block py-2 pl-3 pr-4 text-white  rounded md:bg-transparent md:text-gray-400 md:p-0 " aria-current="page">Dashboard</a>
+                    </li>
+
+                    <li>
+                            <a href="Stores" class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-400 md:p-0 ">Stores</a>
+                    </li>
+                    <li>
+                            <a href="Employee" class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-400 md:p-0 ">Employee</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="mx-auto px-8 py-4">
+            @RenderBody()
+    </main>
+
+    <footer class="p-4 shadow md:flex md:items-center md:justify-between md:p-6 bg-gray-800">
+        <ul class="flex flex-wrap items-center mt-3 text-sm text-gray-400 sm:mt-0">
+            <li>
+                <a href="#" class="mr-4 hover:underline md:mr-6 ">Dashboard</a>
+            </li>
+            <li>
+                <a href="#" class="mr-4 hover:underline md:mr-6">Stores</a>
+            </li>
+            <li>
+                <a href="#" class="mr-4 hover:underline md:mr-6">Employee</a>
+            </li>
+        </ul>
+    </footer>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
