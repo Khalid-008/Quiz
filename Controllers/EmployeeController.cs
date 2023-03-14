@@ -7,65 +7,119 @@ namespace Quiz.Controllers
     public class EmployeeController : Controller
     {
         public readonly IUnitOfWork unitOfWork;
+
         public EmployeeController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
 
+
         [HttpGet]
         public IActionResult Index()
         {
-            IEnumerable<Employee> list = unitOfWork.EmployeeRepository.GetAll();
-            return View(list);
+            try
+            {
+                IEnumerable<Employee> list = unitOfWork.EmployeeRepository.GetAll();
+                return View(list);
+            }
+            catch (Exception)
+            {
+                return View("~/Views/Error.cshtml");
+            }
         }
 
+        #region Add Employee
         [HttpGet]
         public IActionResult AddEmployee()
         {
-            ViewBag.StoresList = unitOfWork.StoreRepository.GetAll().Select(x => x.Id).ToList();
-            return View();
+            try
+            {
+                ViewBag.StoresList = unitOfWork.StoreRepository.GetAll().Select(x => x.Id).ToList();
+                return View();
+            }
+            catch (Exception)
+            {
+                return View("~/Views/Error.cshtml");
+            }
         }
 
         [HttpPost]
         public IActionResult AddEmployee(Employee model)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                ViewBag.StoresList = unitOfWork.StoreRepository.GetAll().Select(x => x.Id).ToList();
+                if (!ModelState.IsValid)
+                {
+                    ViewBag.StoresList = unitOfWork.StoreRepository.GetAll().Select(x => x.Id).ToList();
 
-                return View("AddEmployee", model);
+                    return View("AddEmployee", model);
+                }
+
+                model.Created_date = DateTime.Now.Date;
+                unitOfWork.EmployeeRepository.Add(model);
+                return RedirectToAction("index", "Employee");
             }
-
-            model.Created_date = DateTime.Now.Date;
-            unitOfWork.EmployeeRepository.Add(model);
-            return RedirectToAction("index", "Employee");
+            catch (Exception)
+            {
+                return View("~/Views/Error.cshtml");
+            }
         }
+        #endregion
 
+        #region Update Employee
         [HttpGet]
         public IActionResult UpdateEmployee(int Id)
         {
-            ViewBag.StoresList = unitOfWork.StoreRepository.GetAll().Select(x => x.Id).ToList();
-            var Employee = unitOfWork.EmployeeRepository.GetAll().FirstOrDefault(x => x.Id == Id);
-            return View(Employee);
+            try
+            {
+                ViewBag.StoresList = unitOfWork.StoreRepository.GetAll().Select(x => x.Id).ToList();
+                var Employee = unitOfWork.EmployeeRepository.GetAll().FirstOrDefault(x => x.Id == Id);
+                return View(Employee);
+            }
+            catch (Exception)
+            {
+                return View("~/Views/Error.cshtml");
+            }
         }
         [HttpPost]
         public IActionResult UpdateEmployee(Employee model)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                ViewBag.StoresList = unitOfWork.StoreRepository.GetAll().Select(x => x.Id).ToList();
+                if (!ModelState.IsValid)
+                {
+                    ViewBag.StoresList = unitOfWork.StoreRepository.GetAll().Select(x => x.Id).ToList();
 
-                return View("UpdateEmployee", model);
+                    return View("UpdateEmployee", model);
+                }
+                unitOfWork.EmployeeRepository.Update(model);
+                return RedirectToAction("index", "Employee");
             }
-            unitOfWork.EmployeeRepository.Update(model);
-            return RedirectToAction("index", "Employee");
+            catch (Exception)
+            {
+                return View("~/Views/Error.cshtml");
+            }
         }
+        #endregion
+
+        #region Delete Employee
         [HttpGet]
         public IActionResult DeleteEmployee(int Id)
         {
-            var Employee = unitOfWork.EmployeeRepository.GetAll().FirstOrDefault(x => x.Id == Id);
-            unitOfWork.EmployeeRepository.Delete(Employee);
-            return RedirectToAction("index", "Employee");
+            try
+            {
+                var Employee = unitOfWork.EmployeeRepository.GetAll().FirstOrDefault(x => x.Id == Id);
+
+                if (Employee != null)
+                    unitOfWork.EmployeeRepository.Delete(Employee);
+
+                return RedirectToAction("index", "Employee");
+            }
+            catch (Exception)
+            {
+                return View("~/Views/Error.cshtml");
+            }
         }
+        #endregion
     }
 }

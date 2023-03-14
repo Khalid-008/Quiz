@@ -19,11 +19,17 @@ namespace Quiz.Controllers
 
         public IActionResult Index()
         {
-            var EMP_STOR = context.Set<Store>().Include(x => x.Employee);
-            var model = EMP_STOR.ToList();
-            ViewBag.ActiveEmployee = unitOfWork.EmployeeRepository.GetAll().Where(x => x.Status == Status.Active.ToString()).Count();
-            ViewBag.ActiveStore = unitOfWork.StoreRepository.GetAll().Where(x => x.Status == Status.Active.ToString()).Count();
-            return View(model);
+            try
+            {
+                var EmployeesInStores = context.Set<Store>().Include(x => x.Employee).ToList();
+                ViewBag.ActiveEmployee = unitOfWork.EmployeeRepository.GetAll().Count(x => x.Status == Status.Active.ToString());
+                ViewBag.ActiveStore = unitOfWork.StoreRepository.GetAll().Count(x => x.Status == Status.Active.ToString());
+                return View(EmployeesInStores);
+            }
+            catch (Exception)
+            {
+                return View("~/Views/Error.cshtml");
+            }
         }
     }
 }

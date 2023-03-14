@@ -5,7 +5,7 @@ using Quiz.Repository.DependencyInjection;
 
 namespace Quiz
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {

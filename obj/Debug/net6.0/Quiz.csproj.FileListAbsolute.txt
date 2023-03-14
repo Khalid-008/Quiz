@@ -786,3 +786,12 @@ C:\Users\Khalid\Desktop\Quiz\obj\Debug\net6.0\refint\Quiz.dll
 C:\Users\Khalid\Desktop\Quiz\obj\Debug\net6.0\Quiz.pdb
 C:\Users\Khalid\Desktop\Quiz\obj\Debug\net6.0\Quiz.genruntimeconfig.cache
 C:\Users\Khalid\Desktop\Quiz\obj\Debug\net6.0\ref\Quiz.dll
+C:\Users\Khalid\Desktop\Quiz\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\Users\Khalid\Desktop\Quiz\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\Khalid\Desktop\Quiz\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\Khalid\Desktop\Quiz\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\Khalid\Desktop\Quiz\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\Khalid\Desktop\Quiz\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\Users\Khalid\Desktop\Quiz\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
+C:\Users\Khalid\Desktop\Quiz\bin\Debug\net6.0\PagedList.dll
+C:\Users\Khalid\Desktop\Quiz\bin\Debug\net6.0\PagedList.Mvc.dll

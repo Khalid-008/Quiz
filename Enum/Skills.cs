@@ -2,7 +2,7 @@
 {
     public enum Skills
     {
-        Inventory_specialist = 1,
-        Sales_agent = 2,
+        Inventory_Secialist = 1,
+        Sales_Agent = 2,
     }
 }

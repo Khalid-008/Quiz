@@ -10,12 +10,12 @@ namespace Quiz.Data
             : base(options)
         {
         }
-        public DbSet<Store> Stores { get; set; }
-        public DbSet<Employee> Employees { get; set; }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public DbSet<Store>? Stores { get; set; }
+        public DbSet<Employee>? Employees { get; set; }
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Employee>().HasOne(s => s.Store).WithMany(e => e.Employee).HasPrincipalKey(x => x.Id).HasForeignKey(x => x.Store_id);
+            base.OnModelCreating(builder);
+            builder.Entity<Employee>().HasOne(s => s.Store).WithMany(e => e.Employee).HasPrincipalKey(x => x.Id).HasForeignKey(x => x.Store_id);
         }
     }
 }
