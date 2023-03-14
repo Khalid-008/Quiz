@@ -15,21 +15,21 @@
             <div class="hidden w-full md:block md:w-auto">
                 <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:text-base md:font-medium md:border-0">
                     <li>
-                            <a href="Dashboard" class="block py-2 pl-3 pr-4 text-white  rounded md:bg-transparent md:text-gray-400 md:p-0 " aria-current="page">Dashboard</a>
+                            <a href="/" class="block py-2 pl-3 pr-4 text-white  rounded md:bg-transparent md:text-gray-400 md:p-0 " aria-current="page">Dashboard</a>
                     </li>
 
                     <li>
-                            <a href="Stores" class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-400 md:p-0 ">Stores</a>
+                            <a asp-controller="Store" asp-action="index" class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-400 md:p-0 ">Stores</a>
                     </li>
                     <li>
-                            <a href="Employee" class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-400 md:p-0 ">Employee</a>
+                            <a asp-controller="Employee" asp-action="index" class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-400 md:p-0 ">Employee</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <main class="mx-auto px-8 py-4">
+    <main class="mx-auto py-4">
             @RenderBody()
     </main>
 
@@ -39,10 +39,10 @@
                 <a href="#" class="mr-4 hover:underline md:mr-6 ">Dashboard</a>
             </li>
             <li>
-                <a href="#" class="mr-4 hover:underline md:mr-6">Stores</a>
+                <a asp-controller="Store" asp-action="index" class="mr-4 hover:underline md:mr-6">Stores</a>
             </li>
             <li>
-                <a href="#" class="mr-4 hover:underline md:mr-6">Employee</a>
+                <a asp-controller="Employee" asp-action="index" class="mr-4 hover:underline md:mr-6">Employee</a>
             </li>
         </ul>
     </footer>

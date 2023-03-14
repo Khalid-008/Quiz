@@ -12,5 +12,10 @@ namespace Quiz.Data
         }
         public DbSet<Store> Stores { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Employee>().HasOne(s => s.Store).WithMany(e => e.Employee).HasPrincipalKey(x => x.Id).HasForeignKey(x => x.Store_id);
+        }
     }
 }

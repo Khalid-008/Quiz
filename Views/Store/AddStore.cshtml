@@ -1,29 +1,33 @@
-﻿@{
+﻿@model Store
+@using Quiz.Enum
+@{
     ViewData["Title"] = "Add Store";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<form>
+<form asp-action="AddStore" asp-controller="Store" method="post">
     <div class="grid w-[80rem] md:grid-cols-2 md:gap-6">
         <div class="relative z-0 w-full mb-6 group">
-            <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 ">Large input</label>
-            <input type="text" name="floating_first_name" id="floating_first_name" class="block rounded-xl px-2 py-2.5 px-0 w-full border-2 border-solid border-gray-600" placeholder=" " required />
+            <label for="Name" class="block mb-2 text-sm font-medium text-gray-900 ">Name</label>
+            <input type="text" asp-for="Name" class="block rounded-xl px-2 py-2.5 px-0 w-full border-2 border-solid border-gray-600" placeholder=" "  />
+            <span class="text-red-500" asp-validation-for="Name"></span>
         </div>
         <div class="relative z-0 w-full mb-6 group">
-            <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 ">Large input</label>
-            <input type="text" name="floating_first_name" id="floating_first_name" class="block rounded-xl px-2 py-2.5 px-0 w-full border-2 border-solid border-gray-600" placeholder=" " required />
+            <label for="Address" class="block mb-2 text-sm font-medium text-gray-900 ">Address</label>
+            <input type="text" asp-for="Address" class="block rounded-xl px-2 py-2.5 px-0 w-full border-2 border-solid border-gray-600" placeholder=" "  />
+            <span class="text-red-500" asp-validation-for="Address"></span>
         </div>
         <div class="relative z-0 w-full mb-6 group">
-            <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 ">Large input</label>
-            <input type="text" name="floating_first_name" id="floating_first_name" class="block rounded-xl px-2 py-2.5 px-0 w-full border-2 border-solid border-gray-600" placeholder=" " required />
+            <label for="Status" class="block mb-2 text-sm font-medium text-gray-900 ">Status</label>
+            <select asp-for="Status" class="block rounded-xl px-2 py-2.5 px-0 w-full border-2 border-solid border-gray-600" asp-items="@(new SelectList( Enum.GetValues(typeof(Status))))">
+                <option value="">Please Select</option>
+            </select>
+            <span class="text-red-500" asp-validation-for="Status"></span>
         </div>
         <div class="relative z-0 w-full mb-6 group">
-            <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 ">Large input</label>
-            <input type="text" name="floating_first_name" id="floating_first_name" class="block rounded-xl px-2 py-2.5 px-0 w-full border-2 border-solid border-gray-600" placeholder=" " required />
-        </div>
-        <div class="relative z-0 w-full mb-6 group">
-            <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 ">Large input</label>
-            <input type="text" name="floating_first_name" id="floating_first_name" class="block rounded-xl px-2 py-2.5 px-0 w-full border-2 border-solid border-gray-600" placeholder=" " required />
+            <label for="Store_type" class="block mb-2 text-sm font-medium text-gray-900 ">Store Type</label>
+            <input type="text" asp-for="Store_type" class="block rounded-xl px-2 py-2.5 px-0 w-full border-2 border-solid border-gray-600" placeholder=" "  />
+            <span class="text-red-500" asp-validation-for="Store_type"></span>
         </div>
     </div>
-    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add</button>
 </form>

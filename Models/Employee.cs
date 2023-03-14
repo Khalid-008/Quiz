@@ -1,23 +1,25 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Quiz.Models
 {
-    public class Store
+    public class Employee
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "This Field is required")]
         [MaxLength(50)]
         public string? Name { get; set; }
         [Required(ErrorMessage = "This Field is required")]
-        [MaxLength(100)]
-        public string? Address { get; set; }
+        [MaxLength(50)]
+        public string? Age { get; set; }
         [Required(ErrorMessage = "This Field is required")]
         [MaxLength(50)]
-        public string? Store_type { get; set; }
+        public string? Skill { get; set; }
+        public DateTime Created_date { get; set; }
         [Required(ErrorMessage = "This Field is required")]
         [MaxLength(50)]
         public string? Status { get; set; }
-        public DateTime Created_date { get; set; }
-        public ICollection<Employee>? Employee { get; set; }
+        [Required(ErrorMessage = "This Field is required")]
+        public int Store_id { get; set; }
+        public Store? Store { get; set; }
     }
 }
